@@ -1,0 +1,32 @@
+---
+title: "class-work"
+author: "Isheka Agarwal"
+date: "11/12/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(googlesheets4)
+```
+
+```{r}
+sheets_deauth()
+x <- read_sheet("13NhlT-Oik5P4NOKRWwrJ7xZQlddFNk81HHEw9wkWglM")
+```
+
+```{r}
+plot <- x %>%
+  select(dvote, partisanship) %>%
+  ggplot(aes(x = partisanship, y = dvote)) + 
+  geom_jitter(height = 0.2) +
+  geom_smooth(method = "lm")
+plot
+```
+
+```{r}
+
+```
+
+
