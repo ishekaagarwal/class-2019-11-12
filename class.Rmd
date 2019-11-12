@@ -22,11 +22,30 @@ plot <- x %>%
   ggplot(aes(x = partisanship, y = dvote)) + 
   geom_jitter(height = 0.2) +
   geom_smooth(method = "lm")
-plot
+
 ```
 
 ```{r}
+lm(data=x, dvote ~ partisanship)
 
+#we need a logistic regression
+#Goldman guy Derek Yi: use optionality of Harvard, 
+
+x %>%
+  ggplot(aes(x = partisanship, y = dvote)) + 
+  geom_jitter() +
+  geom_smooth(method = "glm", method.args= list(family="binomial"), se = FALSE)
+
+#interpretation: changing partisanship at lower end has big effect, changing at upper end has little effect
+#why intercept not at 0? even if strong Republican partisan, could still vote democrat
+
+#monologue on frequentitst and bayesian: bayesians think there is true value
+#boostrap can be interpreted bayesian or frequentist
+#frequentist interpretaition of 95% interval: if we ran it n times, 95% of times would be in there
+#Bayesian: there is 95% probability
+#confidence v credible intervals
+#bayesian interp: there is x chance in here, in there etc
+#frequentist interp: if we do this 100 times, 95 times it's gonna be in this interval
 ```
 
 
